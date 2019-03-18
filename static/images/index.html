@@ -1,0 +1,38 @@
+{{extend 'layout.html'}}
+
+{{block header}}
+    <div class="jumbotron jumbotron-fluid background" style="background-color: #333; color:white; padding:30px;word-wrap:break-word;">
+      <div class="container center">
+        <h1 class="display-5">Mi Primer Blog</h1>
+      </div>
+    </div>
+{{end}}
+
+<div class="container">
+    <div class="row">
+        <h1>Últimas publicaciones</h1>
+          <div class="card-columns">
+          {{for post in posts:}}
+              <div class="card" style="width: 20rem;">
+                  <img class="card-img-top" src="https://picsum.photos/200/150image={{=post.id}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{=post.title}}</h5>
+                    <p class="card-text">{{=post.datetime}}</p>
+                    <p class="card-text">{{=post.body}}</p>
+                    <div class="tags right">
+                        {{if post.tags is not None:}}
+                            {{for tag in post.tags:}}
+                                <span class="badge badge-secondary">{{=tag}}</span>
+                            {{pass}}
+                        {{pass}}
+                    </div>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                  </div>
+            </div>
+        {{pass}}
+        </div>
+    </div>
+</div>
+
+
+

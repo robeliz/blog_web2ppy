@@ -1,0 +1,26 @@
+{{extend 'layout.html'}}
+
+    {{=last_order_title != last_order_title }}
+    {{=last_order_datetime != last_order_datetime }}
+
+    <h1>Mis posts</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Título <a href="{{=URL('list_posts', args=['post.title',last_order_title])}}">Order</a></th>
+          <th scope="col">Fecha <a href="{{=URL('list_posts', args=['post.datetime',last_order_datetime])}}">Order</a></th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{for post in posts:}}
+        <tr>
+          <th scope="row">{{=post.id}}</th>
+          <td>{{=post.title}}</td>
+          <td>{{=post.datetime}}</td>
+          <td><a href="{{=URL('edit', args=post.id)}}" class="btn btn-primary">Editar</a></td>
+        </tr>
+        {{pass}}
+      </tbody>
+    </table>
